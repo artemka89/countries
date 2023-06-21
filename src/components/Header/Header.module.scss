@@ -1,0 +1,34 @@
+@import '../../index.scss';
+
+.header {
+    box-shadow: $shadow;
+    background-color: $color-ui-base;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 0;
+}
+
+.title {
+    color: $color-text;
+    font-size: $fs-sm;
+    font-weight: $fw-bold;
+}
+
+.modeSwitcher {
+    display: flex;
+    align-items: center;
+    text-transform: capitalize;
+    color: $color-text;
+    font-size: $fs-sm;
+    font-weight: $fw-bold;
+    cursor: pointer;
+}
+
+.icon {
+    margin-right: 5px;
+    width: 15px;
+}

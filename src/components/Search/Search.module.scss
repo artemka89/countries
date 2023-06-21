@@ -1,0 +1,26 @@
+@import '../../index.scss';
+
+.inputContainer {
+    width: 280px;
+    height: 38px;   
+    background-color: $color-ui-base;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    border-radius: $radius;
+    box-shadow: $shadow;
+
+}
+
+.input {
+    width: 100%;
+    margin-left: 15px;
+    border: none;
+    outline: none;
+    background-color: $color-ui-base;
+    color: $color-text;
+}
+
+.icon {
+    width: 20px;
+}

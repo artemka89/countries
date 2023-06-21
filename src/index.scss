@@ -1,0 +1,194 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap");
+
+$family: "Nunito Sans", sans-serif;
+$fs-sm: 14px;
+$fs-md: 16px;
+$fw-light: 300;
+$fw-normal: 600;
+$fw-bold: 800;
+
+$radius: 0.5rem;
+
+[data-theme="light"] {
+    --color-text: hsl(200, 15%, 8%);
+    --color-bg: hsl(0, 0%, 98%);
+    --color-ui-base: hsl(0, 0%, 100%);
+    --color-ui-second: hsl(0, 0%, 80%);
+    --color-ui-focus: hsl(0, 0%, 90%);
+    --shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
+}
+
+[data-theme="dark"] {
+    --color-text: hsl(0, 0%, 100%);
+    --color-bg: hsl(207, 26%, 17%);
+    --color-ui-base: hsl(209, 23%, 22%);
+    --color-ui-second: hsl(0, 0%, 68%);
+    --color-ui-focus: hsl(0, 0%, 80%);
+    --shadow: rgba(245, 245, 245, 0.2) 0 0 8px;
+}
+
+$color-text: var(--color-text);
+$color-bg: var(--color-bg);
+$color-ui-base: var(--color-ui-base);
+$color-ui-second: var(--color-ui-second);
+$color-ui-focus: var(--color-ui-focus);
+$shadow: var(--shadow);
+
+body {
+    font-family: $family;
+    font-weight: $fw-light;
+    color: $color-text;
+    background-color: $color-bg;
+}
+
+.customSelect {
+    > div {
+        outline: none !important;
+    }
+    &__single-value {
+        color: $color-text !important;
+    }
+    &__control {
+        cursor: pointer !important;
+        background-color: $color-ui-base !important;
+        border: none !important;
+        border-radius: $radius !important;
+        outline: none !important;
+        &--is-focused {
+            border: none !important;
+            outline: none !important;
+        }
+        &--menu-is-open {
+            border: none !important;
+            background-color: $color-ui-base !important;
+            outline: none !important;
+        }
+    }
+    &__menu {
+        background-color: $color-ui-base !important;
+        border-radius: $radius !important;
+    }
+    &__menu-list {
+    }
+    &__option {
+        cursor: pointer !important;
+        &--is-focused {
+            background-color: $color-ui-focus !important;
+        }
+        &--is-selected {
+            color: $color-text !important;
+            background-color: $color-ui-second !important;
+        }
+    }
+}
+
+/* Reset and base styles  */
+* {
+    padding: 0px;
+    margin: 0px;
+    border: none;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Links */
+
+a,
+a:link,
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+/* Common */
+
+aside,
+nav,
+footer,
+header,
+section,
+main {
+    display: block;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+ul,
+ul li {
+    list-style: none;
+}
+
+img {
+    vertical-align: top;
+}
+
+img,
+svg {
+    max-width: 100%;
+    height: auto;
+}
+
+address {
+    font-style: normal;
+}
+
+/* Form */
+
+input,
+textarea,
+button,
+select {
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    background-color: transparent;
+}
+
+input::-ms-clear {
+    display: none;
+}
+
+button,
+input[type="submit"] {
+    display: inline-block;
+    box-shadow: none;
+    background-color: transparent;
+    background: none;
+    cursor: pointer;
+}
+
+input:focus,
+input:active,
+button:focus,
+button:active {
+    outline: none;
+}
+
+button::-moz-focus-inner {
+    padding: 0;
+    border: 0;
+}
+
+label {
+    cursor: pointer;
+}
+
+legend {
+    display: block;
+}

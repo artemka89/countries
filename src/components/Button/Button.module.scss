@@ -1,0 +1,19 @@
+@import "../../index.scss";
+
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    padding: 0 10px;
+    background-color: $color-ui-base;
+    box-shadow: $shadow;
+    line-height: 2.5;
+    border-radius: $radius;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in;
+    &:hover {
+        background-color: $color-hover;
+    }
+}

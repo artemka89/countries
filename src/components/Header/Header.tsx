@@ -4,6 +4,7 @@ import { useTheme } from "../../hooks/useTheme";
 import { Container } from "../Container/Container";
 
 import styles from "./Header.module.scss";
+import { Link } from "react-router-dom";
 
 export const Header = () => {
     const { theme, handleTheme } = useTheme();
@@ -12,7 +13,7 @@ export const Header = () => {
         <header className={styles.header}>
             <Container>
                 <div className={styles.wrapper}>
-                    <div className={styles.title}>Where is the world?</div>
+                    <Link to="/" className={styles.title}>Where is the world?</Link>
                     <div className={styles.modeSwitcher} onClick={handleTheme}>
                         {theme === "light" ? (
                             <IoMoon className={styles.icon} />

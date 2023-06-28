@@ -1,0 +1,33 @@
+@import "../../index.scss";
+
+.wrapper {       
+    border-radius: $radius;
+    background-color: $color-ui-base;    
+    box-shadow: $shadow;
+    overflow: hidden;
+    cursor: pointer;
+    transition: box-shadow .2s ease-in;
+    &:hover {
+        box-shadow: none;
+    }
+}
+
+.cardImage {
+    display: block;
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.title {
+    font-weight: $fw-bold;
+}
+
+.cardBody {
+    padding: 10px 20px 30px 20px;
+}
+
+.cardList {
+    margin-top: 10px;
+}

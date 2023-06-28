@@ -16,6 +16,7 @@ $radius: 0.5rem;
     --color-ui-second: hsl(0, 0%, 80%);
     --color-ui-focus: hsl(0, 0%, 90%);
     --shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
+    --color-hover: hsl(0, 0%, 89%);
 }
 
 [data-theme="dark"] {
@@ -25,6 +26,7 @@ $radius: 0.5rem;
     --color-ui-second: hsl(0, 0%, 68%);
     --color-ui-focus: hsl(0, 0%, 80%);
     --shadow: rgba(245, 245, 245, 0.2) 0 0 8px;
+    --color-hover: hsl(209, 27%, 36%);
 }
 
 $color-text: var(--color-text);
@@ -33,6 +35,7 @@ $color-ui-base: var(--color-ui-base);
 $color-ui-second: var(--color-ui-second);
 $color-ui-focus: var(--color-ui-focus);
 $shadow: var(--shadow);
+$color-hover: var(--color-hover);
 
 body {
     font-family: $family;

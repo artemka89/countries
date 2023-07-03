@@ -1,12 +1,10 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
-import { ALL_COUNTRIES } from "../config";
-
 import { Controls } from "../components/Controls/Controls";
 import { List } from "../components/List/List";
 import { Card } from "../components/Card/Card";
 import { ICountry } from "../types/CountryType";
 import { useNavigate } from "react-router-dom";
+import { getCountries } from "../api/api_countries";
 
 type HomePage = {
     countries: ICountry[];
@@ -17,7 +15,7 @@ export const HomePage = ({ countries, setCountries }: HomePage) => {
     const [filteredCountries, setFilteredCountries] =
         useState<ICountry[]>(countries);
 
-        const navigate = useNavigate()
+    const navigate = useNavigate();
 
     const handleSearch = (search: string, region: string) => {
         let data: ICountry[] = [...countries];
@@ -41,16 +39,18 @@ export const HomePage = ({ countries, setCountries }: HomePage) => {
 
     useEffect(() => {
         if (!countries.length) {
-            axios
-                .get<ICountry[]>(ALL_COUNTRIES)
-                .then(({ data }) => setCountries(data));
+            getCountries()
+                .then(({ data }) => setCountries(data))
+                .catch(function (error) {
+                    console.error(error);
+                });
         }
     }, []);
 
     useEffect(() => {
-        handleSearch('', '');
+        handleSearch("", "");
         // eslint-disable-next-line
-      }, [countries]);
+    }, [countries]);
 
     return (
         <>

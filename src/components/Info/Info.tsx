@@ -1,12 +1,9 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-
 import { ICountryDitails } from "../../types/CountryType";
 import styles from "./Info.module.scss";
-import { filterByCode } from "../../config";
 
 type InfoPropstype = {
     navigate: (nav: string) => void;
+    neigbors: string[]    
 };
 
 export const Info = ({
@@ -16,33 +13,11 @@ export const Info = ({
     capital,
     region,
     subregion,
-    tld = [],
-    borders,
+    tld = [],    
+    neigbors,
     navigate,
 }: ICountryDitails & InfoPropstype) => {
-    const [neigbors, setNaigbors] = useState([]);
-
-    useEffect(() => {
-        if (borders) {
-            axios
-                .get(filterByCode(borders))
-                .then(({ data }) =>
-                    setNaigbors(
-                        data.map(
-                            (c: { name: { common: string } }) => c.name.common
-                        )
-                    )
-                );
-        }
-    }, [borders]);
-
-    const list = {
-        name: name?.common,
-        population,
-        region,
-        subregion,
-    };
-
+    
     return (
         <div className={styles.wrapper}>
             <img src={flags?.png} alt="Flag" className={styles.image} />
@@ -75,7 +50,7 @@ export const Info = ({
                                 <span key={domain}>{domain}</span>
                             ))}
                         </li>
-                        {borders && (
+                        {neigbors && (
                             <li className={styles.listItem}>
                                 <b>Borders: </b>
                                 {neigbors.map((neigbor) => (

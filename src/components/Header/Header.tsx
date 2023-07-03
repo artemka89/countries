@@ -7,7 +7,9 @@ import styles from "./Header.module.scss";
 import { Link } from "react-router-dom";
 
 export const Header = () => {
-    const { theme, handleTheme } = useTheme();
+    const { theme, setTheme } = useTheme();
+
+    const handleTheme = () => setTheme(theme === 'light' ? 'dark' : 'light')
 
     return (
         <header className={styles.header}>

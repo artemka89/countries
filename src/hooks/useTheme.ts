@@ -6,12 +6,10 @@ interface ITheme {
 
 export const useTheme = () => {
 
-    const [theme, setTheme] = useState<string>('light')
-
-    const handleTheme = () => setTheme(theme === 'light' ? 'dark' : 'light')     
+    const [theme, setTheme] = useState<string>('light')   
 
     useEffect(() => {
        document.body.setAttribute('data-theme', theme) 
     }, [theme])
-    return {theme, handleTheme}
+    return { theme, setTheme }
 }

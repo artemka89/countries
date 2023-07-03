@@ -1,26 +1,26 @@
 export interface ICountry {
-    name: CountyName;
+    name: CountryName;
     capital: string;
-    flags: CountyFlags;
+    flags: CountryFlags;
     population: number;
     region: string;
 }
 
-type CountyFlags = {
+type CountryFlags = {
     alt: string;
     png: string;
     svg: string;
 };
 
-type CountyName = {
+type CountryName = {
     common: string;
     official: string;
 };
 
 export interface ICountryDitails {
-    name?: CountyName;
+    name?: CountryName;
     capital?: string;
-    flags?: CountyFlags;
+    flags?: CountryFlags;
     population?: number;
     region?: string;
     subregion?: string;

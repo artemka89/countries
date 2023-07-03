@@ -1,26 +1,49 @@
-import { useParams, useNavigate } from "react-router-dom"
-import axios from "axios";
+import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { searchByCountry } from "../config";
 import { IoArrowBack } from "react-icons/io5";
 import { Button } from "../components/Button/Button";
 import { Info } from "../components/Info/Info";
 import { ICountryDitails } from "../types/CountryType";
+import { getCountry, getCountryByCode } from "../api/api_countries";
 
 export const Ditails = () => {
-    const {name} = useParams()
-    const navigate = useNavigate()    
+    const { name } = useParams();
+    const navigate = useNavigate();
 
-    const [country, setCountry] = useState<ICountryDitails | null>(null)
+    const [country, setCountry] = useState<ICountryDitails | null>(null);
+    const [neigbors, setNaigbors] = useState<string[]>([]);
 
     useEffect(() => {
-        axios.get(searchByCountry(name)).then(({data}) => setCountry(data[0]))
-    }, [name])
-    
+        getCountry(name)
+            .then(({ data }) => setCountry(data[0]))
+            .catch(function (error) {
+                console.error(error);
+            });
+    }, [name]);
+
+    useEffect(() => {
+        if (country?.borders) {
+            getCountryByCode(country.borders)
+                .then(({ data }) =>
+                    setNaigbors(
+                        data.map(
+                            (c: { name: { common: string } }) => c.name.common
+                        )
+                    )
+                )
+                .catch(function (error) {
+                    console.error(error);
+                });
+        }
+    }, [country?.borders]);
+
     return (
         <div>
-           <Button goToBack={navigate}><IoArrowBack />Back</Button>
-           <Info navigate={navigate} {...country}/>
+            <Button goToBack={navigate}>
+                <IoArrowBack />
+                Back
+            </Button>
+            <Info navigate={navigate} neigbors={neigbors} {...country} />
         </div>
-    )
-}
+    );
+};

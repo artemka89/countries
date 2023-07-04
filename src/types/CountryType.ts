@@ -1,30 +1,23 @@
 export interface ICountry {
-    name: CountryName;
+    name: string;
+    nativeName?: string;
     capital: string;
-    flags: CountryFlags;
-    population: number;
     region: string;
-}
-
-type CountryFlags = {
-    alt: string;
-    png: string;
-    svg: string;
-};
-
-type CountryName = {
-    common: string;
-    official: string;
-};
-
-export interface ICountryDitails {
-    name?: CountryName;
-    capital?: string;
-    flags?: CountryFlags;
-    population?: number;
-    region?: string;
     subregion?: string;
-    tld?: string[];
+    population: number;
+    flags: { png: string; svg: string };
+    languages?: { name: string }[];
     borders?: string[];
 }
-
+export interface ICountryDitails {
+    name: string;
+    nativeName: string;
+    capital: string;
+    region: string;
+    subregion: string;
+    population: number;
+    flags: { png: string; svg: string };
+    languages: { name: string }[];
+    borders: string[];
+    topLevelDomain: string[];
+}

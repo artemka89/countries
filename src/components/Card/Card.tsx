@@ -9,10 +9,10 @@ type CardPropstype = {
 export const Card = ({name, capital, flags, population, region, navigate}: ICountry & CardPropstype) => {
     
     return (
-        <div onClick={() => navigate(`/country/${name.common}`)} className={styles.wrapper}>
+        <div onClick={() => navigate(`/country/${name}`)} className={styles.wrapper}>
             <img className={styles.cardImage} src={flags.png} alt="Country" />
             <div className={styles.cardBody}>
-                <div className={styles.title}>{name.common}</div>
+                <div className={styles.title}>{name}</div>
                 <ul className={styles.cardList}>
                     <li className={styles.cardListItem}><b>Population:</b> {population}</li>
                     <li className={styles.cardListItem}><b>Region:</b> {region}</li>

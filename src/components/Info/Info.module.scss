@@ -8,6 +8,13 @@
     align-items: center;
 }
 
+.infoTitle {
+    font-size: 18px;
+    font-weight: $fw-bold;
+    color: #4e4e4e;
+    text-decoration: underline;
+}
+
 .image {
     display: block;
     width: 100%;

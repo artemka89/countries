@@ -12,6 +12,7 @@ type HomePage = {
 };
 
 export const HomePage = ({ countries, setCountries }: HomePage) => {
+
     const [filteredCountries, setFilteredCountries] =
         useState<ICountry[]>(countries);
 
@@ -21,7 +22,7 @@ export const HomePage = ({ countries, setCountries }: HomePage) => {
         let data: ICountry[] = [...countries];
         if (search) {
             data = data.filter((country) =>
-                country.name.common
+                country.name
                     .toLowerCase()
                     .includes(search.toLocaleLowerCase())
             );
@@ -58,7 +59,7 @@ export const HomePage = ({ countries, setCountries }: HomePage) => {
             <List>
                 {filteredCountries.map((country) => (
                     <Card
-                        key={country.name.common}
+                        key={country.name}
                         name={country.name}
                         capital={country.capital}
                         flags={country.flags}

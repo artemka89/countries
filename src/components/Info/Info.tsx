@@ -3,50 +3,56 @@ import styles from "./Info.module.scss";
 
 type InfoPropstype = {
     navigate: (nav: string) => void;
-    neigbors: string[]    
+    neigbors: string[];
 };
 
 export const Info = ({
     name,
+    nativeName,
     flags,
     population,
     capital,
+    languages,
     region,
     subregion,
-    tld = [],    
+    topLevelDomain,
     neigbors,
     navigate,
 }: ICountryDitails & InfoPropstype) => {
-    
+    const infoArray = [
+        { info: nativeName, title: "Native Name:" },
+        { info: population, title: "Population:" },
+        { info: capital, title: "Capital:" },
+        { info: region, title: "Region:" },
+        { info: subregion, title: "Sub Region:" },
+    ];
+
     return (
         <div className={styles.wrapper}>
-            <img src={flags?.png} alt="Flag" className={styles.image} />
+            <img src={flags.png} alt="Flag" className={styles.image} />
             <div className={styles.infoBlock}>
                 <h1 className={styles.infoTitle}>
-                    <b>{name?.official}</b>
+                    <b>{name}</b>
                 </h1>
                 <div className={styles.listGroup}>
                     <ul className={styles.list}>
+                        {infoArray.map((info) => (
+                            <li className={styles.listItem}>
+                                <b>{info.title} </b> {info.info}
+                            </li>
+                        ))}
                         <li className={styles.listItem}>
-                            <b>Native Name:</b> {name?.official}
+                            <b>Languages:</b>{" "}
+                            {languages.map((lang, index) => (
+                                <span key={lang.name}>
+                                    {lang.name}
+                                    {index < languages.length - 1 && ","}
+                                </span>
+                            ))}
                         </li>
-                        <li className={styles.listItem}>
-                            <b>Population:</b> {population}
-                        </li>
-                        <li className={styles.listItem}>
-                            <b>Region:</b> {region}
-                        </li>
-                        <li className={styles.listItem}>
-                            <b>Sub Region:</b> {subregion}
-                        </li>
-                        <li className={styles.listItem}>
-                            <b>Capital:</b> {capital}
-                        </li>
-                    </ul>
-                    <ul className={styles.list}>
                         <li className={styles.listItem}>
                             <b>Top Level Domain: </b>
-                            {tld?.map((domain) => (
+                            {topLevelDomain?.map((domain) => (
                                 <span key={domain}>{domain}</span>
                             ))}
                         </li>

@@ -24,19 +24,16 @@ export const Ditails = () => {
     useEffect(() => {
         if (country?.borders) {
             getCountryByCode(country.borders)
-                .then(({ data }) =>
-                    setNaigbors(
-                        data.map(
-                            (c: { name: { common: string } }) => c.name.common
-                        )
-                    )
-                )
+                .then(({ data }) => setNaigbors(data.map((c) => c.name)))
                 .catch(function (error) {
                     console.error(error);
                 });
         }
     }, [country?.borders]);
 
+    if (!country) {
+        return <>Loading...</>;
+    }
     return (
         <div>
             <Button goToBack={navigate}>

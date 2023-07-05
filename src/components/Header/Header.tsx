@@ -5,6 +5,7 @@ import { Container } from "../Container/Container";
 
 import styles from "./Header.module.scss";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 export const Header = () => {
     const { theme, setTheme } = useTheme();

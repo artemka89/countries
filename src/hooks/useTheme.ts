@@ -1,15 +1,17 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 
 interface ITheme {
-    theme: 'light' | 'dark'
+    theme: "light" | "dark";
 }
 
 export const useTheme = () => {
-
-    const [theme, setTheme] = useState<string>('light')   
+    const savedTheme =  localStorage.getItem("theme")
+    const initTheme = savedTheme ? savedTheme : "light"
+    const [theme, setTheme] = useState<string>(initTheme);
 
     useEffect(() => {
-       document.body.setAttribute('data-theme', theme) 
-    }, [theme])
-    return { theme, setTheme }
-}
+        document.body.setAttribute("data-theme", theme);
+        localStorage.setItem("theme", theme)
+    }, [theme]);
+    return { theme, setTheme };
+};

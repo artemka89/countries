@@ -48,9 +48,11 @@ body {
     > div {
         outline: none !important;
     }
+
     &__single-value {
         color: $color-text !important;
     }
+
     &__control {
         cursor: pointer !important;
         background-color: $color-ui-base !important;
@@ -67,12 +69,12 @@ body {
             outline: none !important;
         }
     }
+
     &__menu {
         background-color: $color-ui-base !important;
         border-radius: $radius !important;
     }
-    &__menu-list {
-    }
+
     &__option {
         cursor: pointer !important;
         &--is-focused {

@@ -18,6 +18,5 @@ export interface ICountryDitails {
     population: number;
     flags: { png: string; svg: string };
     languages: { name: string }[];
-    borders: string[];
-    topLevelDomain: string[];
+    borders: string[];    
 }

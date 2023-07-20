@@ -1,4 +1,6 @@
 import { ICountryDitails } from "../../types/CountryType";
+import { List } from "../List/List";
+import { ListItem } from "../ListItem/ListItem";
 import styles from "./Info.module.scss";
 
 type InfoPropstype = {
@@ -14,18 +16,26 @@ export const Info = ({
     capital,
     languages,
     region,
-    subregion,
-    topLevelDomain,
+    subregion,    
     neigbors,
     navigate,
 }: ICountryDitails & InfoPropstype) => {
-    const infoArray = [
-        { info: nativeName, title: "Native Name:" },
-        { info: population, title: "Population:" },
-        { info: capital, title: "Capital:" },
-        { info: region, title: "Region:" },
-        { info: subregion, title: "Sub Region:" },
-    ];
+    const language = languages.map((lang, index) => {
+        const comma = index < languages.length - 1 && ", ";
+        return lang.name + comma;
+    });
+
+    const borders = neigbors.map((neigbor) => (
+        <span
+            onClick={() => {
+                navigate(`/country/${neigbor}`);
+            }}
+            className={styles.tag}
+            key={neigbor}
+        >
+            {neigbor}
+        </span>
+    ));
 
     return (
         <div className={styles.wrapper}>
@@ -36,41 +46,15 @@ export const Info = ({
                 </h1>
                 <div className={styles.listGroup}>
                     <ul className={styles.list}>
-                        {infoArray.map((info) => (
-                            <li className={styles.listItem}>
-                                <b>{info.title} </b> {info.info}
-                            </li>
-                        ))}
-                        <li className={styles.listItem}>
-                            <b>Languages:</b>{" "}
-                            {languages.map((lang, index) => (
-                                <span key={lang.name}>
-                                    {lang.name}
-                                    {index < languages.length - 1 && ","}
-                                </span>
-                            ))}
-                        </li>
-                        <li className={styles.listItem}>
-                            <b>Top Level Domain: </b>
-                            {topLevelDomain?.map((domain) => (
-                                <span key={domain}>{domain}</span>
-                            ))}
-                        </li>
-                        {neigbors && (
-                            <li className={styles.listItem}>
-                                <b>Borders: </b>
-                                {neigbors.map((neigbor) => (
-                                    <span
-                                        onClick={() => {
-                                            navigate(`/country/${neigbor}`);
-                                        }}
-                                        className={styles.tag}
-                                        key={neigbor}
-                                    >
-                                        {neigbor}
-                                    </span>
-                                ))}
-                            </li>
+                        <ListItem title="Native Name" infoName={nativeName} />
+                        <ListItem title="Population" infoName={population} />
+                        <ListItem title="Capital" infoName={capital} />
+                        <ListItem title="Region" infoName={region} />
+                        <ListItem title="Sub Region" infoName={subregion} />
+                        <ListItem title="Languages" infoName={language} />
+
+                        {neigbors.length > 1 && (
+                            <ListItem title="Borders" infoName={borders} />
                         )}
                     </ul>
                 </div>

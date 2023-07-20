@@ -36,7 +36,7 @@ export const Ditails = () => {
     }
     return (
         <div>
-            <Button goToBack={navigate}>
+            <Button onClickBtn={() => navigate(-1)}>
                 <IoArrowBack />
                 Back
             </Button>

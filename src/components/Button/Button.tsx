@@ -2,16 +2,13 @@ import styles from "./Button.module.scss";
 
 type ButtonPropsType = {
     children: React.ReactNode;
-    goToBack: (num: number) => void;
+    onClickBtn: () => void;
 };
 
-export const Button = ({ children, goToBack }: ButtonPropsType) => {
-    const onCLickButton = () => {
-        goToBack(-1);
-    };
-
+export const Button = ({ children, onClickBtn}: ButtonPropsType) => {
+   
     return (
-        <button onClick={onCLickButton} className={styles.btn}>
+        <button onClick={onClickBtn} className={styles.btn}>
             {children}
         </button>
     );
